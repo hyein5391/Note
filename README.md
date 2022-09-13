@@ -35,3 +35,28 @@ Main()
 fhand = open('mbox-short.txt')
 inp = fhanc.read()
 print(len(inp)
+
+#=======================================================================================================
+9월 13일 화요일
+try 와 except
+
+try:
+	예외가 발생할 수 있는 코드
+except:
+	예외 발생시 실행하는 코드
+
+문제
+KBD 에서 문자열을 입력받아 숫자로 변환하는 프로그램을 작성하시오 단 입력오류시 다시 입력 가능하도록 구성하시오
+
+while True:
+    s = input("숫자형 문자를 입력하세요")
+    try:
+        i = int(s)
+        print(i)
+    except:
+        try :
+            j = float(s)
+            print(j)
+        except :
+            print("잘못 입력하셧습니다.")
+            break
