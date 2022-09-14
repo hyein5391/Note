@@ -72,3 +72,7 @@ for i in range(len(s)) :
 
 for name in s :         #위와 같은 결과값
     print(name)
+
+
+
+
