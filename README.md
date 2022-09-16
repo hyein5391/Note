@@ -117,3 +117,95 @@ for ln in b :
         print(f"{'%02x'%c1}", end=' ')                   #end=''는줄바꿈  %02x 는 16진수를 2자리로 표시함 02는 두자리수의 16진수를 채워주는데 앞이 비어있다면 0을 채워준다
     print("\n")                                                                 #%c 는
  
+
+
+#=======================================================================================================================
+#점 그래프
+
+install.packages("mlmRev")
+
+getwd()
+setwd("c:/bigdataR")
+library(lattice)
+library(mlmRev)
+str(Chem97)
+head(Chem97)
+
+help("histogram")
+
+histogram(~gcsescore | score, data = Chem97) #첫번째 결과 그래프
+
+histogram(~gcsescore | factor(score), data = Chem97)
+
+densityplot(~gcsescore | factor(score), data = Chem97,
+            groups = gender,
+            plot.points = T, auto.key = T)
+
+help(barchart)
+help(VADeaths)
+str(VADeaths)
+head(VADeaths)
+summary(VADeaths)
+VADeaths
+dft <- as.data.frame.table(VADeaths)    #table 빈도수를 나타낸다
+dft
+
+barchart(Var1 ~ Freq | Var2, data = dft, layout = c(4,1), origin=0)
+
+
+help(dotplot)
+dotplot(Var1 ~ Freq | Var2, data = dft, layout = c(4,1))
+dotplot(Var1 ~ Freq, data = dft, groups = Var2, type="o", auto.key = list(space = "right", points = T, lines = T))
+#dotplot 차트에 선을 연결 할수있다 선을 연결하기 위해서는 나누어 진 그래프를 하나로 합쳐야 한다
+
+
+#=====================================================================================================================
+#산점도 그래프
+library(datasets)
+str(airquality)
+xyplot(Ozone ~ Wind, data = airquality)
+xyplot(Ozone ~ Wind | factor(Month), data = airquality, layout=c(5,1))
+
+head(quakes)
+#xyplot(lat ~ long, data = quakes, pch=".", main = "1964")
+
+tplot <- xyplot(lat ~ long, data = quakes, pch=".")
+tplot <- update(tplot, main="1964년 이후 지진 위치")
+tplot
+print(tplot)
+
+head(quakes)
+range(quakes$depth)
+summary(quakes$depth)
+quakes$depth2[quakes$depth >=40 & quakes$depth <=150] <- 1
+quakes$depth2[quakes$depth >=151 & quakes$depth <=250] <- 2
+quakes$depth2[quakes$depth >=251 & quakes$depth <=350] <- 3
+quakes$depth2[quakes$depth >=351 & quakes$depth <=450] <- 4
+quakes$depth2[quakes$depth >=451 & quakes$depth <=550] <- 5
+quakes$depth2[quakes$depth >=551 & quakes$depth <=680] <- 6
+head(quakes) #6단계로 나누어 놓은 데이터 자료 #핵터를 사용하여 범주형으로 바꿀수있다
+
+#xyplot(lat ~ long | depth2, data = quakes, pch = ".")        #팩터 함수를 사용하지 않은 상태
+xyplot(lat ~ long | factor(depth2), data = quakes, pch = ".") #팩터를 사용하여 범주형으로 바꾸어줌
+
+head(airquality)
+
+xyplot(Ozone + Solar.R ~ Wind | factor(Month), data = airquality, col = c("blue","red"), layout=c(5,1))
+
+numgroup <- equal.count(1:150, number = 4, overlap = 0)
+numgroup
+
+depthgroup <- equal.count(quakes$depth, number = 5 , overlap=0)
+depthgroup
+
+xyplot(lat ~ long | depthgroup, data = quakes, pch = ".")
+
+range(quakes$mag)
+
+magnitudegroup <- equal.count(quakes$mag, number = 2, overlap = 0)
+magnitudegroup
+
+xyplot(lat ~ long | magnitudegroup, data = quakes,
+       main = "fiji Earthquakes(msgnitude)",
+       ylab = "latitude", xlab = "longitude",
+       pch = "o", col = "red")
