@@ -228,14 +228,13 @@ class point : # 2D point (2차원 포인트) x 와 y 축을 나타
         x1 = self.x + p.x
         y1 = self.y + p.y
         return (point(x1,y1))
-    def __mul__(self, m) : #m : 실수
+    
+    def Scalar(self, m) : #m : 실수
         x1 = self.x * m
         y1 = self.y * m
         return(point(x1,y1))
-    def __mul__(self, p) : #m : 실수
+    
+    def __mul__(self, p) :
         x1 = self.x * p.x
         y1 = self.y * p.y
         return(point(x1,y1))
-p1 = point(10,10)
-p2 = point(5,5)
-p3 = p1*p2
