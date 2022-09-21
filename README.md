@@ -238,3 +238,14 @@ class point : # 2D point (2차원 포인트) x 와 y 축을 나타
         x1 = self.x * p.x
         y1 = self.y * p.y
         return(point(x1,y1))
+
+p1 = point(10,10)
+p2 = point(20,20)
+p3 = p1+p2
+p4 = p1*p2
+p5 = p1.Scalar(50)
+print(f"(10,10) + (20,20) = ({p3.x},{p3.y})")
+print(f"(10,10) * (20,20) = ({p4.x},{p4.y})")
+print(f"(10,10) * 50        = ({p5.x},{p5.y})")
+print(f"(10,10) + (20,20) = ({p3.x},{p3.y})")
+
