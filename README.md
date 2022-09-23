@@ -255,4 +255,17 @@ print(f"(10,10) + (20,20) = ({p3.x},{p3.y})")
 
 객체 클레스와 인스턴스
 
-https://donutsoft.co.kr/
+https://donutsoft.co.kr/ 도넛소프트 사이트 <--- 강의온 대표님 회사 주소
+
+
+
+ https://jdk.java.net/archive <---- java 다운로드 주소
+-> 11GA 버전 다운 
+
+https://www.mariadb.com/   <-------mariadb 다운로드 주소
+-> 다운로드 -> 10.6.10-ga 안정화 버전 -> MS Windows 변경
+
+https://www.mysql.com/
+->MySQL Community Downloads -> connector -> Archived -> 5.1.49버전 ->  Platform Independent (Architecture Independent), ZIP Archive
+
+
