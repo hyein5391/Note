@@ -266,6 +266,11 @@ https://www.mariadb.com/   <-------mariadb 다운로드 주소
 -> 다운로드 -> 10.6.10-ga 안정화 버전 -> MS Windows 변경
 utf8 설치시 클릭 
 
+접속 명령어 : mysql -u root -p
+설치시 지정했던 비밀번호 입력
+
+마리아 빠져나오는 키 quit
+
 
 https://www.mysql.com/
 ->MySQL Community Downloads -> connector -> Archived -> 5.1.49버전 ->  Platform Independent (Architecture Independent), ZIP Archive
