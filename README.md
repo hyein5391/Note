@@ -278,4 +278,94 @@ https://www.mysql.com/
 
 
 
+======================================================================================================================================================
+# code 가 6 단가 20만원인 "청소기" 2개를 추가
+query = "insert into goods2 values(6, '청소기', 2, 200000)"
+dbSendUpdate(conn, query)
+
+# 단가 60만원 보다 큰 상품에 대해 수량을 5로 수정
+query = "update goods2 set su = 5 where dan > 600000"
+dbSendUpdate(conn, query)
+
+# 수량이 1인 상품을 삭제
+query <- "delete from goods2 where su = 1"        #특정 코드 내용을 삭제 한다
+dbSendUpdate(conn, query)
+
+# 각 문법이 실행될 때마다 전체 테이블 조회
+query <- "select * from goods2 wher name like '%기' "   #%는 모든 문자를 말하고 마지막은 기 <--- 가와야 한다
+
+# 일부 열의 데이터만 추가
+query <- "insert into goods2 (code, name, su, dan) values(7, '안마의자' , 1, 500000)"
+
+# DML(Data Manipulatlon Language) : 데이터 조작어
+# select, insert, update, delete
+# select 필드명리스트 from 테이블명 where 조건절 order by 정렬키 순서
+# insert into 테이블명 (필드리스트) values(값리스트)
+# update 테이블명 set 필드명1 = 값1, 필드명2= 값2........ where 조건절
+# delete from 테이블명 where 조건절
+
+
+
+↓↓↓↓↓ SQL 사용방법
+
+USE WORK;
+SELECT * FROM shopuser;
+
+DESC shopuser;
+INSERT INTO shopuser VALUES ('tiger', '홍길동', 25);
+INSERT INTO shopuser VALUES ('lion', '김삿갓', 30);
+
+DESC shopproduct;
+INSERT INTO shopproduct VALUES (1, '냉장고', 1000000);
+INSERT INTO shopproduct VALUES (2, '세탁기', 550000);
+INSERT INTO shopproduct VALUES (3, 'TV', 1200000);
+INSERT INTO shopproduct VALUES (4, '청소기', 200000);
+SELECT * FROM shopproduct;
+
+
+DESC shopsale;
+INSERT INTO shopsale VALUES('tiger', 2 , 1);
+INSERT INTO shopsale VALUES('lion', 3 , 2);
+INSERT INTO shopsale VALUES('lion', 4 , 2);
+INSERT INTO shopsale VALUES('tiger', 1 , 3);
+SELECT * from shopsale;
+
+/*  Join 쿼리 [별명을 사용하여 문법을 줄일수있다 2개의 테이블 조인 */
+SELECT u.uid, u.uname,s.pCode, u.uage, s.sCount
+	FROM shopuser u, shopsale s
+	WHERE u.uid = s.uid;
+	
+/* shopProduct와 sopsale 조인 */
+SELECT p.pCode, s.sCount, p.pName 
+	FROM shopproduct p, shopsale s
+	WHERE p.pCode = s.pCode;
+
+/* shopuser, shopsale, shopproduct 조인 */
+SELECT u.uname, p.pName, s.sCount
+	FROM shopuser u, shopproduct p, shopsale s
+	WHERE u.uid = s.uid AND p.pCode = s.pCode;
+	
+SELECT *
+	FROM shopuser u, shopproduct p, shopsale s
+	WHERE u.uid = s.uid AND p.pCode = s.pCode;
+
+/* 김삿갓이 구매한 내역에 대해 성명, 상품명, 수량을 출력 */
+
+SELECT u.uname, p.pName, s.sCount, p.pPrice * s.sCount subtot
+	FROM shopuser u, shopproduct p, shopsale s
+	WHERE u.uid = s.uid AND p.pCode = s.pCode
+		AND u.uname = '김삿갓';
+
+/* 서브쿼리 : 조회한 결과를 다른 조회구문의 입력 */
+/* 세탁기를 구매한 고객들의 모든 이름 */
+
+SELECT * FROM shopsale;
+
+SELECT * FROM shopuser WHERE uid =
+	(SELECT uid FROM shopsale WHERE pCode = 
+		(SELECT pCode FROM shopproduct WHERE pname = '청소기')) ;
+
+
+
+
 
