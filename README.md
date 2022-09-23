@@ -264,6 +264,8 @@ https://donutsoft.co.kr/ 도넛소프트 사이트 <--- 강의온 대표님 회�
 
 https://www.mariadb.com/   <-------mariadb 다운로드 주소
 -> 다운로드 -> 10.6.10-ga 안정화 버전 -> MS Windows 변경
+utf8 설치시 클릭 
+
 
 https://www.mysql.com/
 ->MySQL Community Downloads -> connector -> Archived -> 5.1.49버전 ->  Platform Independent (Architecture Independent), ZIP Archive
