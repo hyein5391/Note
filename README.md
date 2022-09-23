@@ -276,3 +276,6 @@ https://www.mysql.com/
 ->MySQL Community Downloads -> connector -> Archived -> 5.1.49버전 ->  Platform Independent (Architecture Independent), ZIP Archive
 
 
+
+
+
