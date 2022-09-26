@@ -369,3 +369,47 @@ SELECT * FROM shopuser WHERE uid =
 
 
 
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+테이블 만들고 계정 로그인 기타등등
+
+로그인 방법
+mysql -u (아이디적는공간) -p
+비밀번호
+
+show databases;
+
+use test;
+showtables;
+createdatabase work;
+show databases;
+use work;
+
+#테이블 만들기
+create table goods(
+	code int primary key,
+	name varchar(2) not null,
+	su int,
+	dan int);
+
+#테이블 목록 보기
+show tables;
+
+#레코드 추가
+
+insert into goods values (1, '냉장고', 2, 850000);
+
+#추가레코드 확인
+select * from goods;
+
+
+사용자 계정만들기
+create user 'scott'@'localhost' identified by 'tiger';
+
+사용자에게 권한주기
+grant all privileges on work.* to 'scott'@'localhost';
+
+flush privileges;
+
+나가기
+quit
+
